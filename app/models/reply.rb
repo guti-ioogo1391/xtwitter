@@ -1,9 +1,8 @@
 class Reply < ApplicationRecord
 
-    belongs_to :user
-    belongs_to :tweet
+    belongs_to :user, foreign_key: 'users_id'
+    belongs_to :tweet, foreign_key: 'tweets_id'
   
-    # Validations
-    validates :body, presence: true
+    validates :body, presence: true, length: { minimum: 255 }
     
 end

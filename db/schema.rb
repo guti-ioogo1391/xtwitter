@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_20_174110) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_204200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_174110) do
     t.string "username"
   end
 
+  add_foreign_key "bookmarks", "tweets", column: "tweets_id"
+  add_foreign_key "bookmarks", "users", column: "users_id"
   add_foreign_key "followers", "users", column: "follower_user_id"
   add_foreign_key "followers", "users", column: "following_user_id"
+  add_foreign_key "likes", "tweets", column: "tweets_id"
+  add_foreign_key "likes", "users", column: "users_id"
+  add_foreign_key "replies", "tweets", column: "tweets_id"
+  add_foreign_key "replies", "users", column: "users_id"
+  add_foreign_key "taggins", "hashtags", column: "hashtags_id"
+  add_foreign_key "taggins", "tweets", column: "tweets_id"
+  add_foreign_key "tweets", "users", column: "users_id"
 end
