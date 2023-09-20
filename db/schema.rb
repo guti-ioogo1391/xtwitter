@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_20_155324) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_165213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_155324) do
     t.index ["users_id"], name: "index_likes_on_users_id"
   end
 
-  create_table "new_colums_in_users", force: :cascade do |t|
+  create_table "replies", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "tweets_id"
+    t.text "body"
+    t.index ["tweets_id"], name: "index_replies_on_tweets_id"
+    t.index ["users_id"], name: "index_replies_on_users_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -48,9 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_155324) do
     t.boolean "quotes"
     t.datetime "created_at", precision: nil
     t.index ["users_id"], name: "index_tweets_on_users_id"
-  end
-
-  create_table "username_columns", force: :cascade do |t|
   end
 
   create_table "users", force: :cascade do |t|

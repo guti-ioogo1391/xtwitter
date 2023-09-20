@@ -71,4 +71,3 @@ add_foreign_key "followers", "users", column: "follower_user_id" and      add_fo
 
 ### Database Diagram
 
-![DIAGRAM](xtwitter-db-diagram.png)
